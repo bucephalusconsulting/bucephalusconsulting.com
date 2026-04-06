@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucephalus Consulting | Heritage, Environment & Planning</title>
+    <meta name="description" content="Bucephalus Consulting provides heritage planning, archaeological assessment, and environmental screening services to Ontario municipalities and legal professionals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream-50: #faf8f5;
+            --cream-100: #f5f0ea;
+            --cream-200: #ebe4d8;
+            --stone-300: #d6d3d1;
+            --stone-400: #a8a29e;
+            --stone-500: #78716c;
+            --stone-600: #57534e;
+            --stone-700: #44403c;
+            --stone-800: #292524;
+            --stone-900: #1c1917;
+            --accent: #8b6f47;
+            --accent-light: #a8894d;
+            --accent-dark: #6b5635;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--sans); color: var(--stone-800); background: var(--cream-50); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,245,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--cream-200); transition: box-shadow 0.3s; }
+        header.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+        nav { max-width: 1100px; margin: 0 auto; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+        .logo img { height: 36px; width: auto; }
+        .logo-text { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--stone-900); letter-spacing: 0.02em; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--stone-600); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--stone-700); margin: 5px 0; }
+
+        .hero { padding: 9rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
+        .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
+        .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem,5vw,3.4rem); font-weight: 700; line-height: 1.15; color: var(--stone-900); max-width: 700px; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.35s; }
+        .hero p { font-size: 1.1rem; font-weight: 300; color: var(--stone-600); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s; }
+        .hero-cta { display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-50); background: var(--accent); padding: 0.9rem 2.2rem; text-decoration: none; transition: all 0.25s; opacity: 0; animation: fadeUp 0.6s ease forwards 0.65s; }
+        .hero-cta:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(139,111,71,0.2); }
+
+        .divider { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .divider-line { height: 1px; background: linear-gradient(90deg, transparent, var(--stone-300), transparent); }
+
+        .services { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+        .section-title { font-family: var(--serif); font-size: clamp(1.8rem,3.5vw,2.4rem); font-weight: 700; color: var(--stone-900); margin-bottom: 1rem; line-height: 1.2; }
+        .section-intro { font-size: 1.05rem; font-weight: 300; color: var(--stone-500); max-width: 600px; margin-bottom: 3rem; line-height: 1.7; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .service-card { padding: 2rem; border: 1px solid var(--cream-200); background: white; transition: all 0.3s; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.3s; }
+        .service-card:hover { border-color: var(--stone-300); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .service-card:hover::before { height: 100%; }
+        .service-card h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--stone-900); margin-bottom: 0.6rem; }
+        .service-card p { font-size: 0.9rem; font-weight: 300; color: var(--stone-600); line-height: 1.65; }
+
+        .credentials { padding: 5rem 2rem; background: var(--stone-900); color: var(--cream-100); }
+        .credentials-inner { max-width: 1100px; margin: 0 auto; }
+        .credentials .section-label { color: var(--accent-light); }
+        .credentials .section-title { color: var(--cream-100); margin-bottom: 2rem; }
+        .credentials-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .credentials-body p { font-size: 1rem; font-weight: 300; color: var(--stone-400); line-height: 1.75; margin-bottom: 1rem; }
+        .capability-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+        .capability-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.92rem; font-weight: 400; color: var(--cream-200); line-height: 1.5; }
+        .capability-list li::before { content: ''; min-width: 6px; height: 6px; margin-top: 0.45rem; background: var(--accent); display: block; }
+
+        .research { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .research-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; padding: 2rem 0; border-top: 1px solid var(--cream-200); border-bottom: 1px solid var(--cream-200); }
+        .research-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-400); min-width: 140px; }
+        .research-content { flex: 1; }
+        .research-content p { font-size: 0.9rem; font-weight: 300; color: var(--stone-500); line-height: 1.65; margin-bottom: 0.6rem; }
+        .research-content span { font-weight: 500; color: var(--stone-700); }
+
+        .contact { padding: 5rem 2rem; background: var(--cream-100); }
+        .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .contact-info p { font-size: 1rem; font-weight: 300; color: var(--stone-600); line-height: 1.7; margin-bottom: 2rem; }
+        .contact-detail { display: flex; flex-direction: column; gap: 0.8rem; }
+        .contact-detail a { font-size: 1rem; font-weight: 500; color: var(--accent); text-decoration: none; transition: color 0.2s; }
+        .contact-detail a:hover { color: var(--accent-dark); }
+        .contact-detail span { font-size: 0.9rem; color: var(--stone-500); }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-form input, .contact-form textarea { font-family: var(--sans); font-size: 0.95rem; padding: 0.85rem 1rem; border: 1px solid var(--stone-300); background: white; color: var(--stone-800); outline: none; transition: border-color 0.2s; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form button { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-50); background: var(--accent); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: all 0.25s; align-self: flex-start; }
+        .contact-form button:hover { background: var(--accent-dark); }
+
+        footer { padding: 2.5rem 2rem; background: var(--stone-900); text-align: center; }
+        footer p { font-size: 0.8rem; font-weight: 300; color: var(--stone-600); }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(250,248,245,0.98); backdrop-filter: blur(12px); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--cream-200); }
+            .nav-links.open { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero { padding: 7rem 1.5rem 3.5rem; }
+            .credentials-body { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .research-inner { flex-direction: column; gap: 1rem; }
+            .services, .contact, .credentials { padding: 3.5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Bucephalus Consulting">
+                <span class="logo-text">Bucephalus Consulting</span>
+            </a>
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p class="hero-eyebrow">Heritage &middot; Environment &middot; Planning</p>
+        <h1>Expert consulting for communities navigating heritage and environmental planning.</h1>
+        <p>We help Ontario municipalities, legal professionals, and development teams meet their heritage conservation, archaeological, and environmental obligations &mdash; efficiently and with confidence.</p>
+        <a href="#contact" class="hero-cta">Get in Touch</a>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <section class="services reveal" id="services">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Services</h2>
+        <p class="section-intro">Practical, expert guidance for the regulatory and planning challenges that matter most to your community.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Heritage Planning</h3>
+                <p>Heritage Impact Assessments, Cultural Heritage Landscape evaluations, and advisory services for Part IV and Part V designations under the Ontario Heritage Act. We help municipalities and proponents navigate heritage planning with clarity.</p>
+            </div>
+            <div class="service-card">
+                <h3>Archaeological Assessment</h3>
+                <p>Stage 1&ndash;2 archaeological assessment oversight, peer review, and advisory services. We ensure compliance with provincial standards and provide expert analysis to support planning decisions and Ontario Land Tribunal proceedings.</p>
+            </div>
+            <div class="service-card">
+                <h3>Environmental Screening</h3>
+                <p>Environmental screening for Species Conservation Act and Planning Act applications, natural heritage system evaluation, and policy review. We help planning departments and developers identify constraints early and move projects forward.</p>
+            </div>
+            <div class="service-card">
+                <h3>Land Use Planning</h3>
+                <p>Official Plan and Zoning By-law review, development application support, and planning policy analysis. We help municipalities and applicants navigate the planning approvals process with practical, informed guidance.</p>
+            </div>
+            <div class="service-card">
+                <h3>Natural Heritage &amp; Ecology</h3>
+                <p>Natural heritage system screening, ecological constraint analysis, and environmental impact assessment support. We identify natural heritage features early in the planning process to reduce risk and avoid delays.</p>
+            </div>
+            <div class="service-card">
+                <h3>Policy &amp; Peer Review</h3>
+                <p>Official Plan conformity reviews for cultural and natural heritage policies, expert peer review of technical reports, and independent analysis for legal professionals preparing for tribunals and hearings.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <section class="credentials reveal" id="about">
+        <div class="credentials-inner">
+            <p class="section-label">About the Firm</p>
+            <h2 class="section-title">Full-spectrum heritage and environmental expertise.</h2>
+            <div class="credentials-body">
+                <div>
+                    <p>Bucephalus Consulting was founded to give municipalities, legal professionals, and development teams access to the kind of specialized heritage and environmental planning expertise that is typically locked up in large firms &mdash; without the overhead, the bureaucracy, or the wait.</p>
+                    <p>Our team brings together advanced academic training in environmental studies, ecology, and archaeology with years of hands-on experience managing heritage and environmental programs on major public-sector infrastructure accounts. We understand how planning decisions are made at every level &mdash; municipal, provincial, and tribunal &mdash; and we bring that perspective to every engagement.</p>
+                </div>
+                <div>
+                    <p style="font-weight:500; color: var(--cream-200); margin-bottom: 1.2rem;">Our expertise spans:</p>
+                    <ul class="capability-list">
+                        <li>Heritage conservation planning and Ontario Heritage Act advisory</li>
+                        <li>Archaeological assessment oversight and peer review</li>
+                        <li>Environmental screening, ecological assessment, and species-at-risk</li>
+                        <li>Land use planning, official plan policy, and development review</li>
+                        <li>Ontario Land Tribunal expert support and testimony</li>
+                        <li>Public infrastructure and asset management advisory</li>
+                        <li>Academic research and professional development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="research reveal">
+        <div class="research-inner">
+            <p class="research-label">Research &amp; Insights</p>
+            <div class="research-content">
+                <p>Our work is informed by ongoing academic research in heritage planning, environmental policy, and cultural landscape conservation. We contribute to professional discourse through publication and peer collaboration.</p>
+                <p><span>Forthcoming:</span> &ldquo;Myth, Memory, and Place: Landscapes as Cycles of Meaning&rdquo; &mdash; GROUND Magazine, Ontario Association of Landscape Architects</p>
+                <p><span>Forthcoming:</span> &ldquo;Collapse Without Disappearance: What Planners Misread About Decline&rdquo; &mdash; Y Magazine, Ontario Professional Planners Institute</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"><div class="divider-line"></div></div>
+
+    <section class="contact reveal" id="contact">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <p class="section-label">Get in Touch</p>
+                <h2 class="section-title">Let&rsquo;s discuss your project.</h2>
+                <p>Whether you&rsquo;re a municipality facing a heritage or environmental planning question, a legal professional seeking expert support, or a development team that needs to understand site constraints &mdash; we&rsquo;re here to help.</p>
+                <div class="contact-detail">
+                    <a href="mailto:info@bucephalusconsulting.com">info@bucephalusconsulting.com</a>
+                    <a href="tel:+12896225553">(289) 622-5553</a>
+                    <span>Serving the Greater Toronto Area and Central Ontario</span>
+                </div>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <input type="text" name="organization" placeholder="Organization (optional)">
+                <textarea name="message" placeholder="Tell us about your project or inquiry..." required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bucephalus Consulting. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => { document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')); });
+    </script>
+</body>
+</html>
