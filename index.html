@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bucephalus Consulting | Heritage, Archaeology, Indigenous Engagement & Planning</title>
-    <meta name="description" content="Bucephalus Consulting provides heritage and archaeological research, Indigenous engagement support, environmental and natural heritage screening, land-use planning, GIS, policy analysis, and multidisciplinary project coordination.">
+    <meta name="description" content="Bucephalus Consulting provides species-at-risk screening, natural heritage assessment, heritage and archaeological research, Indigenous engagement support, land-use planning, GIS, policy analysis, and multidisciplinary project coordination.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -74,6 +74,18 @@
         .capability-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.92rem; font-weight: 400; color: var(--cream-200); line-height: 1.5; }
         .capability-list li::before { content: ''; min-width: 6px; height: 6px; margin-top: 0.45rem; background: var(--accent); display: block; }
 
+        .sar { padding: 5rem 2rem; background: white; }
+        .sar-inner { max-width: 1100px; margin: 0 auto; }
+        .sar-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: start; margin-top: 2.5rem; }
+        .sar-services { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 2rem; }
+        .sar-services li { position: relative; padding-left: 1.1rem; font-size: 0.95rem; color: var(--stone-700); line-height: 1.55; }
+        .sar-services li::before { content: ''; position: absolute; left: 0; top: 0.55rem; width: 6px; height: 6px; background: var(--accent); }
+        .sar-details { padding-left: 2rem; border-left: 1px solid var(--cream-200); }
+        .sar-details h3 { font-family: var(--serif); font-size: 1.35rem; color: var(--stone-900); margin-bottom: 0.8rem; }
+        .sar-details p { font-size: 0.95rem; font-weight: 300; color: var(--stone-600); line-height: 1.7; margin-bottom: 1rem; }
+        .sar-cta { display: inline-block; margin-top: 0.4rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 0.15rem; }
+        .sar-cta:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+
         .research { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
         .research-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; padding: 2rem 0; border-top: 1px solid var(--cream-200); border-bottom: 1px solid var(--cream-200); }
         .research-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-400); min-width: 140px; }
@@ -112,7 +124,10 @@
             .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .services-grid { grid-template-columns: 1fr; }
             .research-inner { flex-direction: column; gap: 1rem; }
-            .services, .contact, .credentials { padding: 3.5rem 1.5rem; }
+            .sar-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .sar-services { grid-template-columns: 1fr; }
+            .sar-details { padding-left: 0; border-left: none; border-top: 1px solid var(--cream-200); padding-top: 2rem; }
+            .services, .sar, .contact, .credentials { padding: 3.5rem 1.5rem; }
         }
     </style>
 </head>
@@ -128,6 +143,7 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#sar">Species at Risk</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -135,10 +151,36 @@
     </header>
 
     <section class="hero">
-        <p class="hero-eyebrow">Heritage &middot; Archaeology &middot; Indigenous Engagement &middot; Environment &middot; Planning</p>
+        <p class="hero-eyebrow">Heritage &middot; Archaeology &middot; Indigenous Engagement &middot; Species at Risk &middot; Planning</p>
         <h1>Clear research and guidance for complex places, responsibilities, and decisions.</h1>
         <p>We help municipalities, Indigenous organizations, legal and planning teams, community groups, and project proponents connect heritage, archaeology, Indigenous engagement, environmental requirements, and land-use policy.</p>
         <a href="#contact" class="hero-cta">Get in Touch</a>
+    </section>
+
+    <section class="sar reveal" id="sar">
+        <div class="sar-inner">
+            <p class="section-label">Species at Risk</p>
+            <h2 class="section-title">Identify ecological constraints before they control the project.</h2>
+            <p class="section-intro">Bucephalus Consulting helps landowners, planners, municipalities, legal teams, and project proponents understand which protected species and natural heritage features may affect a property or proposed activity.</p>
+            <div class="sar-grid">
+                <ul class="sar-services">
+                    <li>Desktop species-at-risk and natural heritage screening</li>
+                    <li>Preliminary field reconnaissance and habitat assessment</li>
+                    <li>Building and structure habitat screening</li>
+                    <li>Targeted species and habitat surveys</li>
+                    <li>GIS constraints mapping and spatial analysis</li>
+                    <li>Survey-window and project-planning advice</li>
+                    <li>Regulatory pathway and mitigation support</li>
+                    <li>Technical review of scopes, reports, and project requirements</li>
+                </ul>
+                <div class="sar-details">
+                    <h3>Clear findings for real project decisions</h3>
+                    <p>Our work combines records research, field identification, habitat interpretation, GIS, and regulatory analysis. Each assignment is designed around the property, the proposed activity, and the decisions the client needs to make.</p>
+                    <p>Clients receive a clear account of what may be present, why it matters under current provincial and federal requirements, and what should happen next.</p>
+                    <a href="#contact" class="sar-cta">Discuss a property or project</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="divider"><div class="divider-line"></div></div>
@@ -162,7 +204,7 @@
             </div>
             <div class="service-card">
                 <h3>Environmental &amp; Natural Heritage</h3>
-                <p>Environmental and species-at-risk screening, natural heritage policy review, regulatory-pathway analysis, and environmental assessment research. We identify constraints early, clarify applicable requirements, and set out practical next steps.</p>
+                <p>Species-at-risk screening, habitat assessment, field reconnaissance, natural heritage policy review, constraints mapping, regulatory-pathway analysis, and environmental assessment research. We identify ecological constraints early and set out practical next steps.</p>
             </div>
             <div class="service-card">
                 <h3>Planning, Policy &amp; Regulatory Review</h3>
